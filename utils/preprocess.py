@@ -24,14 +24,19 @@ def clean_data(df):
     
     return df
 
-def get_image_url(image_col):
+def get_image_url(image_url):
     """
     Extract image URL from the images column
     """
-    try:
-        return json.loads(image_col)['jpg']['image_url']
-    except:
-        return "https://via.placeholder.com/300x450"
+    
+    if isinstance(image_url, str) and image_url.startswith("http"):
+        return image_url
+    
+    return "https://via.placeholder.com/300x450"
+    # try:
+    #     return json.loads(image_col)['jpg']['image_url']
+    # except:
+    #     return "https://via.placeholder.com/300x450"
     
 def vectorize_descriptions(text_series):
     """
