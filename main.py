@@ -1,10 +1,7 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
-from sklearn.cluster import KMeans
-from sklearn.preprocessing import StandardScaler
+from utils.preprocess import clean_data, get_image_url
 import joblib
-import os
 
 # Page configuration
 
@@ -25,7 +22,7 @@ def load_data():
 
 df = load_data()
 df = clean_data(df)
-df['image_url'] = df['image'].apply(get_image_url)
+df['image_url'] = df['images'].apply(get_image_url)
 
 kmeans = joblib.load("model/kmeans_model.pkl")
 tfidf = joblib.load("model/tfidf_vectorizer.pkl")

@@ -22,7 +22,7 @@ def get_image_url(image_col):
     Extract image URL from the images column
     """
     try:
-        return eval(images_col)['jpg']['image_url']
+        return eval(image_col)['jpg']['image_url']
     except:
         return "https://via.placeholder.com/300x450"
     
